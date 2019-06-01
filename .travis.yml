@@ -21,12 +21,14 @@ script:
 - cmake --build . --target test
 - cmake --build . --target package
 - doxygen Doxyfile
+- ls ./docs
 deploy:
 - provider: pages
   skip-cleanup: true
-  local_dir: docs
+  local_dir: ./docs
   github-token: $GITHUB_TOKEN
   keep-history: true
+  verbose: true
   on:
     branch: master
   provider: script
