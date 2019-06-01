@@ -29,7 +29,7 @@ deploy:
 
 - provider: pages
   skip-cleanup: true
-  local_dir: $TRAVIS_BUILD_DIR/docs
+  local_dir: $TRAVIS_BUILD_DIR/docs/html
   github-token: "$GITHUB_TOKEN"
   keep-history: true
   on:
