@@ -33,6 +33,5 @@ deploy:
   github-token: $GITHUB_TOKEN
   keep-history: true
   verbose: true
-  target_branch: master/docs
   on:
     branch: master
