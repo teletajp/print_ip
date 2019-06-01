@@ -20,7 +20,7 @@ script:
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
-- doxygen $TRAVIS_BUILD_DIR/docs/Doxyfile
+- doxygen Doxyfile
 - ls ./docs
 deploy:
 - provider: script
@@ -30,7 +30,8 @@ deploy:
 - provider: pages
   skip-cleanup: true
   local_dir: docs
-  github-token: "$GITHUB_TOKEN"
+  github-token: $GITHUB_TOKEN
   keep-history: true
+  verbose: true
   on:
     branch: master
