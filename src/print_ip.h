@@ -6,6 +6,12 @@
 #include <vector>
 #include <list>
 #include <tuple>
+
+template< bool B, class T = void >
+using enable_if_t = typename std::enable_if<B,T>::type;
+
+template< class T, class U >
+inline constexpr bool is_same_v = std::is_same<T, U>::value;
 /**
  * @brief Print ip address presented as integer type
  * 
@@ -14,7 +20,7 @@
  * @return void
  */
 template<typename T>
-typename std::enable_if<std::is_integral<T>::value,void>::type print_ip(const T &val )
+enable_if_t<std::is_integral<T>::value,void> print_ip(const T &val )
 {
     const uint8_t *bytes = (uint8_t*)&val;
     for(int i = sizeof(T)-1; i >= 0 ; --i)
@@ -31,8 +37,8 @@ typename std::enable_if<std::is_integral<T>::value,void>::type print_ip(const T 
  * @return void
  */
 template<typename T>
-typename std::enable_if<std::is_same<std::vector<typename T::value_type>, T>::value 
-|| std::is_same<std::list<typename T::value_type>, T>::value, void>::type print_ip(const T& container)
+enable_if_t<is_same_v<std::vector<typename T::value_type>, T> 
+|| is_same_v<std::list<typename T::value_type>, T>, void> print_ip(const T& container)
 {
     for(auto it = container.begin(); it != container.end();)
     {
