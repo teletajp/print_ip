@@ -20,7 +20,7 @@ script:
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
-- doxygen docs/Doxyfile
+- doxygen Doxyfile
 - ls ./docs
 deploy:
 - provider: script
