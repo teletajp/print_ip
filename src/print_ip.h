@@ -6,7 +6,13 @@
 #include <vector>
 #include <list>
 #include <tuple>
-
+/**
+ * @brief Print ip address presented as integer type
+ * 
+ * @tparam T Integer type
+ * @param val IP value
+ * @return void
+ */
 template<typename T>
 std::enable_if_t<std::is_integral<T>::value,void> print_ip(const T &val )
 {
@@ -17,7 +23,13 @@ std::enable_if_t<std::is_integral<T>::value,void> print_ip(const T &val )
         i ? std::cout<<'.' : std::cout<<std::endl;
     }
 }
-
+/**
+ * @brief Print ip address presented as container
+ * 
+ * @tparam T Container type
+ * @param container Container
+ * @return void
+ */
 template<typename T>
 std::enable_if_t<std::is_same_v<std::vector<typename T::value_type>, T> 
 || std::is_same_v<std::list<typename T::value_type>, T>, void> print_ip(const T& container)
@@ -29,9 +41,13 @@ std::enable_if_t<std::is_same_v<std::vector<typename T::value_type>, T>
         (it != container.end()) ? std::cout<<'.' : std::cout<<std::endl;
     }
 }
-
-template<typename T>
-std::enable_if_t<std::is_same_v<std::string, T>, void> print_ip(const T& container)
+/**
+ * @brief Print ip address
+ * 
+ * @param ip IP address string
+ * @return void
+ */
+void print_ip(const std::string &ip)
 {
-    std::cout << container << std::endl;
+    std::cout << ip << std::endl;
 }
