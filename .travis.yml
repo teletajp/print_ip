@@ -1,10 +1,11 @@
 dist: xenial
 language: cpp
-compiler: gcc@7
+compiler: g++
 before_script:
 - sudo apt update
 - sudo apt install libgtest-dev -y
-- sudo apt install gcc@7 -y
+- sudo apt install gcc-7 g++-7 -y
+- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-7
 - sudo apt install cmake
 - sudo apt-get install -y -qq graphviz doxygen
 - cd /usr/src/gtest
