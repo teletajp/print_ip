@@ -7,10 +7,11 @@ print_ip.h
 
 add_executable(${PROJECT_NAME} ${BIN_SRC})
 
-set($NEED_COMPILE_OPTION )
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z")
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
+    COMPILE_OPTIONS "-std=c++1z"
     #COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
     #COMPILE_OPTIONS "$<IF:$<CXX_COMPILER_ID:MSVC>,/we /Wall /WX, -Wpedantic;-Wall;-Wextra>"
 )

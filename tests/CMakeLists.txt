@@ -7,8 +7,10 @@ add_executable(${TARGET_NAME} ${TARGET_SRC})
 set_target_properties(${TARGET_NAME} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
-    COMPILE_OPTIONS "-std=c++17"
+    COMPILE_OPTIONS "-std=c++1z"
 )
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z")
 
 if(WIN32)
     target_compile_options(${TARGET_NAME} PUBLIC "/MT$<$<CONFIG:Debug>:d>")
