@@ -14,7 +14,7 @@
  * @return void
  */
 template<typename T>
-std::enable_if_t<std::is_integral<T>::value,void> print_ip(const T &val )
+typename std::enable_if<std::is_integral<T>::value,void>::type print_ip(const T &val )
 {
     const uint8_t *bytes = (uint8_t*)&val;
     for(int i = sizeof(T)-1; i >= 0 ; --i)
@@ -31,8 +31,8 @@ std::enable_if_t<std::is_integral<T>::value,void> print_ip(const T &val )
  * @return void
  */
 template<typename T>
-std::enable_if_t<std::is_same_v<std::vector<typename T::value_type>, T> 
-|| std::is_same_v<std::list<typename T::value_type>, T>, void> print_ip(const T& container)
+typename std::enable_if<std::is_same<std::vector<typename T::value_type>, T>::value 
+|| std::is_same<std::list<typename T::value_type>, T>::value, void>::type print_ip(const T& container)
 {
     for(auto it = container.begin(); it != container.end();)
     {
