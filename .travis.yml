@@ -1,11 +1,11 @@
 dist: xenial
 language: cpp
-compiler: g++
+compiler: clang
 before_script:
-- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-- sudo apt-get update -q
-- sudo apt-get install gcc-7 -y
-- sudo apt-get install g++-7 -y
+- wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+- sudo apt-get update
+- sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-7.0 main"
+- sudo apt-get install -y clang-7.0 lld-7.0
 - sudo apt install libgtest-dev -y
 - sudo apt install cmake
 - sudo apt-get install -y -qq graphviz doxygen

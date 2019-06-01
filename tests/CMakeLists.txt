@@ -7,7 +7,7 @@ add_executable(${TARGET_NAME} ${TARGET_SRC})
 set_target_properties(${TARGET_NAME} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
-    #COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
+    COMPILE_OPTIONS "-std=c++17"
 )
 
 if(WIN32)
