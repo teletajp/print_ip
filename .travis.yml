@@ -29,7 +29,7 @@ deploy:
 
 - provider: pages
   skip-cleanup: true
-  local_dir: docs
+  local_dir: docs/html
   github-token: $GITHUB_TOKEN
   keep-history: true
   verbose: true
