@@ -1,10 +1,10 @@
 dist: xenial
 language: cpp
-compiler: gcc
+compiler: clang
 before_script:
 - sudo apt update
 - sudo apt install libgtest-dev -y
-- sudo apt install gcc -y
+- sudo apt install clang -y
 - sudo apt install cmake
 - sudo apt-get install -y -qq graphviz doxygen
 - cd /usr/src/gtest
