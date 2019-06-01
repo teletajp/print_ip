@@ -6,6 +6,7 @@ before_script:
 - sudo apt install libgtest-dev -y
 - sudo apt install clang -y
 - sudo apt install cmake
+- sudo apt-get install -y -qq graphviz doxygen
 - cd /usr/src/gtest
 - sudo cmake .
 - sudo make
@@ -14,16 +15,21 @@ before_script:
 - sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
 - sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 script:
-- cd /home/travis/build/teletajp/ip_filter
-- mkdir build
-- cd build
-- cmake ..
+- cd /home/travis/build/teletajp/print_ip
+- cmake .
 - cmake --build .
-- cmake --build ./tests --target test
+- cmake --build . --target test
 - cmake --build . --target package
+- doxygen Doxyfile
 deploy:
+- provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
   provider: script
   skip_cleanup: true
   script:
-  - curl -T ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -u teletajp:$BINTRAY_API_KEY "https://api.bintray.com/content/teletajp/otus-cpp/homework/$TRAVIS_BUILD_NUMBER/ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -u teletajp:$BINTRAY_API_KEY "https://api.bintray.com/content/teletajp/otus-cpp/homework/$TRAVIS_BUILD_NUMBER/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
   
