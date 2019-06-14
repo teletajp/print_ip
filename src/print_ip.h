@@ -12,6 +12,9 @@ using enable_if_t = typename std::enable_if<B,T>::type;
 
 template< class T, class U >
 inline constexpr bool is_same_v = std::is_same<T, U>::value;
+
+template< class T>
+inline constexpr bool is_integral_v = std::is_integral<T>::value;
 /**
  * @brief Print ip address presented as integer type
  * 
@@ -20,7 +23,7 @@ inline constexpr bool is_same_v = std::is_same<T, U>::value;
  * @return void
  */
 template<typename T>
-enable_if_t<std::is_integral<T>::value,void> print_ip(const T &val )
+enable_if_t<std::is_integral_v<T>,void> print_ip(const T &val )
 {
     const uint8_t *bytes = (uint8_t*)&val;
     for(int i = sizeof(T)-1; i >= 0 ; --i)
