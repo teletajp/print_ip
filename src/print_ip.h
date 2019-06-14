@@ -23,7 +23,7 @@ inline constexpr bool is_integral_v = std::is_integral<T>::value;
  * @return void
  */
 template<typename T>
-enable_if_t<std::is_integral_v<T>,void> print_ip(const T &val )
+enable_if_t<is_integral_v<T>,void> print_ip(const T &val )
 {
     const uint8_t *bytes = (uint8_t*)&val;
     for(int i = sizeof(T)-1; i >= 0 ; --i)
